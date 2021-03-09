@@ -1,0 +1,1 @@
+# Remove merged branches
