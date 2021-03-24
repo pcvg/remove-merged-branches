@@ -1,0 +1,13 @@
+name: 'Remove merged branches'
+description: 'Remove merged branches without PR as a trigger.'
+inputs:
+  protected_branch:
+    description: 'Protected branch'
+    required: false
+    default: 'main'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.event_before }}
+    - ${{ inputs.protected_branch }}
