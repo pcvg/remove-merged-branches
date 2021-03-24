@@ -6,13 +6,19 @@ Remove the branches that were merged in the branch in which you run this action.
 
 This Action is useful when your workflow does not merge changes (after PR) against your main branch directly.
 
-## How it works?
+## How does it work?
 
-Using `git` we get all the merged branches in the current branch (`$GITHUB_ACTION_REF`) and then they are removed, except the branch added to the ignore list and the branch that run the action. A message is displayed in the log for each branch removed or ignored. Some additional branches are ignored by default, it is important to check in [considerations](#considerations).
+1. Using `git`, all merged branches in the current branch (`$GITHUB_ACTION_REF`) are fetched
+2. Branches are removed, exc.:
+  - current branch
+  - the branches added to the ignore list
+3. A message is logged for each branch that is removed or ignored
+
+__ATTENTION__: some branches are ignored by default, see [considerations](#considerations).
 
 ## 🚀 Running in GitHub actions
 
-Run this action in Github Actions adding `pcvg/remove-merged-branches@master` in your steps.
+Run this action in Github Actions by adding `pcvg/remove-merged-branches@main` to your steps.
 
 ### Parameters
 
@@ -22,29 +28,32 @@ Run this action in Github Actions adding `pcvg/remove-merged-branches@master` in
 
 ### Example
 
-In this example all branches that were merged with `master` will be removed.
+In the below example all branches merged to `main` will be removed:
 
 ```yml
 name: Remove merged branches
 on:
   push:
     branches:
-      - master
+      - main
   
 jobs:
   remove-branches:
     runs-on: ubuntu-latest
     steps:
       - name: Remove branches
-        uses: pcvg/remove-merged-branches@master
+        uses: pcvg/remove-merged-branches@main
         with:
           protected_branch: some-branch
 ```
 
 ### Considerations
- - Any branch that is a copy of main(base) branch (without any diff) will also be removed.
- - By default the `staging`, `production` and `master` branches will always be ignored in the removal process.
-
+- Any branch that is a copy of the default branch (without any diff) will also be removed
+ - Following branches will be ignored and not removed by default:
+   - `main`
+   - `staging`
+   - `production`
+   - `master`
 
 ## ⚖️ License
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details
