@@ -5,8 +5,8 @@ inputs:
     description: 'Protected branch'
     required: false
     default: 'main'
-  github_branch_action:
-    description: 'Branch from origin'
+  head_branch:
+    description: 'Head branch'
     default: ${{ github.ref }}
 runs:
   using: 'docker'
