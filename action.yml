@@ -5,6 +5,9 @@ inputs:
     description: 'Protected branch'
     required: false
     default: 'main'
+  head_branch:
+    description: 'Head branch'
+    default: ${{ github.ref }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
