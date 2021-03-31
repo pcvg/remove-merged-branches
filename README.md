@@ -41,6 +41,9 @@ jobs:
   remove-branches:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Remove branches
         uses: pcvg/remove-merged-branches@main
         with:
