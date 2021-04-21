@@ -2,21 +2,22 @@
 
 Remove the branches that were merged in the branch in which you run this action.
 
-🟡 Do you really need this? Github has the possibility to delete branches automatically after PR. [Check it](https://docs.github.com/en/github/administering-a-repository/managing-the-automatic-deletion-of-branches) 🟡
+## :warning: Warning
 
-This Action is useful when your workflow does not merge changes (after PR) against your default branch directly.
+- __Do you really need this?__ GitHub can also delete branches automatically after PR has been merged. See [managing the automatic deletion of branches](https://docs.github.com/en/github/administering-a-repository/managing-the-automatic-deletion-of-branches). This Action is useful when your workflow does not merge changes (after PR) against your default branch directly.
+- __This action WILL delete branches!__ Please do your due diligence before using this tool. The provider of this software will not take liability over any mishaps that may occur.
 
-## How does it work?
+## :gear: How does it work?
 
 1. Using `git`, all merged branches in the current branch (`$GITHUB_ACTION_REF`) are fetched
-2. Branches are removed, exc.:
+2. Branches are removed, except for:
   - current branch
   - the branches added to the ignore list
-3. A message is logged for each branch that is removed or ignored
+3. Message is logged for each branch that is removed or ignored
 
 __ATTENTION__: some branches are ignored by default, see [considerations](#considerations).
 
-## 🚀 Running in GitHub Actions
+## :rocket: Running in GitHub Actions
 
 Run this action in Github Actions by adding `pcvg/remove-merged-branches@main` to your steps.
 
@@ -36,7 +37,7 @@ on:
   push:
     branches:
       - main
-  
+
 jobs:
   remove-branches:
     runs-on: ubuntu-latest
@@ -52,11 +53,11 @@ jobs:
 
 ### Considerations
 - Any branch that is a copy of the default branch (without any diff) will also be removed
- - Following branches will be ignored and not removed by default:
+- Following branches will be ignored and not removed by default:
    - `main`
    - `staging`
    - `production`
    - `master`
 
 ## ⚖️ License
-This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
