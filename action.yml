@@ -1,5 +1,8 @@
 name: 'Remove merged branches'
 description: 'Remove merged branches without PR as a trigger.'
+branding:
+  icon: 'chevron-down'
+  color: 'white'
 inputs:
   protected_branch:
     description: 'Protected branch'
