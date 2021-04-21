@@ -4,10 +4,8 @@ Remove the branches that were merged in the branch in which you run this action.
 
 ## :warning: Warning
 
-- __Do you really need this?__ GitHub can also delete branches automatically after PR has been merged. See [managing the automatic deletion of branches](https://docs.github.com/en/github/administering-a-repository/managing-the-automatic-deletion-of-branches).
+- __Do you really need this?__ GitHub can also delete branches automatically after PR has been merged. See [managing the automatic deletion of branches](https://docs.github.com/en/github/administering-a-repository/managing-the-automatic-deletion-of-branches). This Action is useful when your workflow does not merge changes (after PR) against your default branch directly.
 - __This action WILL delete branches!__ Please do your due diligence before using this tool. The provider of this software will not take liability over any mishaps that may occur.
-
-This Action is useful when your workflow does not merge changes (after PR) against your default branch directly.
 
 ## :gear: How does it work?
 
